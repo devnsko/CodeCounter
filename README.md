@@ -36,71 +36,77 @@ Install the required dependencies:
 pip install -r requirements.txt
 ```
 
+## Easy-to-Use Shortcuts for Windows, macOS, and Linux
+
+For quick access to the script from any location, you can set up a shortcut.
+
+#### Windows
+
+1. Create a `counter.bat` file in the root directory with the following contents:
+
+   ```bat
+   @echo off
+   call C:\Path\To\CodeCounter\.venv\Scripts\activate  # Update this path
+   python C:\Path\To\CodeCounter\main.py %*  # Update this path
+   deactivate
+   ```
+
+2. Add the directory containing `counter.bat` to your system PATH:
+   - Go to **Control Panel** > **System and Security** > **System** > **Advanced system settings** > **Environment Variables**.
+   - Under **System variables**, find the **Path** variable, and add the path to the directory containing `counter.bat`.
+
+You can now use the script from any directory with the command:
+```bash
+counter [options]
+```
+
+#### Linux / macOS
+
+1. Create a shortcut script `counter` in `/usr/local/bin` or another directory in your PATH:
+
+   ```bash
+   #!/bin/bash
+   source /path/to/CodeCounter/.venv/bin/activate  # Update this path
+   python /path/to/CodeCounter/main.py "$@"  # Update this path
+   deactivate
+   ```
+
+2. Make the script executable and ensure it’s in your PATH:
+
+   ```bash
+   chmod +x /usr/local/bin/counter
+   ```
+
+You can now use the command in the terminal:
+```bash
+counter [options]
+```
+
 ## Usage
 
 The basic usage format is as follows:
 ```bash
-python main.py [directory] [-e EXTENSIONS] [-x EXCLUDE_FILES] [-X EXCLUDE_DIRS] [-g] [--debug]
+counter [directory] [-e EXTENSIONS] [-x EXCLUDE_FILES] [-X EXCLUDE_DIRS] [-g] [--debug]
 ```
 
 ### Example Commands
 - **Basic Counting**:
   ```bash
-  python main.py src
+  counter src
   ```
 - **With Specific Extensions** (e.g., `.py` and `.js`):
   ```bash
-  python main.py src -e .py .js
+  counter src -e .py .js
   ```
 - **Using .gitignore Exclusions**:
   ```bash
-  python main.py src -g
+  counter src -g
   ```
 - **Enable Debug Mode**:
   ```bash
-  python main.py src --debug
+  counter src --debug
   ```
 
-## Easy-to-Use Shortcuts for Windows, macOS, and Linux
-
-### Windows Setup with `counter.bat`
-1. Create a `counter.bat` file in the project directory:
-   ```bat
-   @echo off
-   call .venv\Scripts\activate
-   python %~dp0\main.py %*
-   ```
-2. Add the project directory to your system PATH:
-   - Go to **System Properties > Environment Variables**.
-   - Find the **Path** variable, click **Edit**, and add the path to your project directory.
-3. Now, you can run the script from anywhere in the command prompt:
-   ```bash
-   counter C:\pat\to\your\directory -e .py .js -g --debug
-   ```
-
-### macOS and Linux Setup with `counter.sh`
-1. Create a `counter.sh` file in the project directory:
-   ```bash
-   #!/bin/bash
-   source .venv/bin/activate
-   python "$(dirname "$0")/main.py" "$@"
-   ```
-2. Make the script executable:
-   ```bash
-   chmod +x counter.sh
-   ```
-3. Add the project directory to your PATH. Open `~/.bashrc` (or `~/.zshrc` for Zsh users) and add:
-   ```bash
-   export PATH="$PATH:/path/to/your/project"
-   ```
-4. Reload the terminal or source your shell configuration:
-   ```bash
-   source ~/.bashrc  # or source ~/.zshrc
-   ```
-5. You can now run the script from any directory:
-   ```bash
-   counter.sh /path/to/your/directory -e .py .js -g --debug
-   ```
 
 ## Arguments and Options
 
