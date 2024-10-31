@@ -16,8 +16,8 @@ A lightweight Python script that scans directories for source code files, counts
 ### 1. Clone the Repository
 Clone this repository to your local machine:
 ```bash
-git clone https://github.com/devnsko/code-counter.git
-cd code-counter
+git clone https://github.com/devnsko/CodeCounter.git
+cd CodeCounter
 ```
 
 ### 2. Set Up a Virtual Environment
